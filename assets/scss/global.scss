@@ -1,0 +1,40 @@
+@use "vars";
+@use "mixins";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+html, body, #__nuxt {
+    width: 100%;
+    height: 100dvh;
+}
+
+input, textarea, select {
+    outline: none;
+}
+
+input, button, textarea, select {
+    background: transparent;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.ql-align-right {
+    text-align: right !important;
+}
+
+.ql-align-center {
+    text-align: center !important;
+}
+
+.ql-align-justify {
+    text-align: justify !important;
+}

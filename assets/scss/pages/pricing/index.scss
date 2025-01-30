@@ -1,0 +1,73 @@
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 3px;
+    background: linear-gradient(
+                    -70deg,
+                    #1199DF,  // яркий голубой
+                    #2E54DC,  // синий
+                    #2E54DC,  // синий
+                    #9BD5FF   // светло-голубой
+    );
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+  }
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.shadow-hover {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(62, 14, 134, 0.15);
+  }
+}
+
+.price-tag {
+  .h2 {
+    font-size: 2.5rem;
+  }
+}
+
+.title-width {
+  position: relative;
+  width: 75%;
+  z-index: 2;
+}
+
+.icon-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-icon {
+  background: linear-gradient(
+                  -70deg,
+                  #1199DF,  // яркий голубой
+                  #2E54DC,  // синий
+                  #2E54DC,  // синий
+                  #9BD5FF   // светло-голубой
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.8;
+}

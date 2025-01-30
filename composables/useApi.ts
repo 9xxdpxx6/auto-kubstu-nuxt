@@ -1,0 +1,74 @@
+import type { Post, PostPreview } from '@/types/blog'
+import type { Discount } from '~/types/discounts'
+import type { Category, CategoryPreview } from '@/types/categories'
+
+export const useApi = () => {
+  const config = useRuntimeConfig()
+  const baseUrl = config.public.apiBase
+
+  const prefixes = {
+    guest: '/guest'
+  } as const
+
+  interface ApiResponse<T> {
+    data: {
+      value?: {
+        data: T[];
+        meta?: {
+          current_page: number;
+          last_page: number;
+          total: number;
+        }
+      }
+    }
+  }
+
+  // Базовые методы для запросов
+  const request = async <T>(endpoint: string, options: { 
+    headers?: Record<string, string>, 
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH', 
+    body?: any,
+    params?: Record<string, any>
+  } = {}) => {
+    return useFetch<ApiResponse<T>>(`${baseUrl}${prefixes.guest}${endpoint}`, {
+      ...options,
+      headers: {
+        'Accept': 'application/json',
+        ...options.headers
+      }
+    })
+  }
+
+  // API endpoints
+  const categories = {
+    list: () => request<CategoryPreview>('/categories'),
+    getById: (id: string | number) => request<Category>(`/categories/${id}`),
+    getBySlug: (slug: string) => request<Category>(`/categories/${slug}`)
+  }
+
+  const posts = {
+    list: (params?: Record<string, any>) => request<PostPreview>('/posts', { params }),
+    getById: (id: string | number) => request<Post>(`/posts/${id}`),
+    getBySlug: (slug: string) => request<Post>(`/posts/${slug}`)
+  }
+
+  const discounts = {
+    list: () => request<Discount>('/discounts'),
+    getById: (id: string | number) => request<Discount>(`/discounts/${id}`),
+    getBySlug: (slug: string) => request<Discount>(`/discounts/${slug}`)
+  }
+
+  const callbacks = {
+    create: (data: any) => request('/callback-requests', {
+      method: 'POST',
+      body: data
+    })
+  }
+
+  return {
+    categories,
+    posts,
+    discounts,
+    callbacks
+  }
+}
