@@ -28,6 +28,11 @@
 </template>
 
 <script setup lang="ts">
+import slide1Image from '~/assets/images/slider/slide-1-cars.jpg'
+import slide2Image from '~/assets/images/slider/slide-2-square.jpg'
+import slide3Image from '~/assets/images/slider/slide-3-moto.jpg'
+import slide4Image from '~/assets/images/slider/slide-4-moto.jpg'
+
 interface Slide {
   image: string
   title: string
@@ -36,22 +41,22 @@ interface Slide {
 
 const slides = ref<Slide[]>([
   {
-    image: '/images/slider/slide-1-cars.JPG',
+    image: slide1Image,
     title: 'Скидки на обучение',
     description: 'Скидки для обучающихся при оплате обучения и прохождении водительской медицинской комиссии'
   },
   {
-    image: '/images/slider/slide-2-square.JPG',
+    image: slide2Image,
     title: 'Лучшие инструкторы',
     description: 'Наши инструкторы – это профессионалы с многолетним опытом, готовые помочь вам освоить вождение быстро и эффективно'
   },
   {
-    image: '/images/slider/slide-3-moto.JPG',
+    image: slide3Image,
     title: 'Категории А и В',
     description: 'Обучаем вождению как легковых автомобилей, так и мотоциклов, с гибкими графиками занятий'
   },
   {
-    image: '/images/slider/slide-4-moto.JPG',
+    image: slide4Image,
     title: 'Гарантия успешной сдачи',
     description: '98% наших учеников успешно сдают экзамены в ГИБДД с первого раза'
   }

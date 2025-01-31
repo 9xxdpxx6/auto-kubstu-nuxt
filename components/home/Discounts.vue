@@ -36,6 +36,9 @@
 </template>
 
 <script setup lang="ts">
+import discount1Image from '~/assets/images/discounts/discount-1-skoda.jpg'
+import discount2Image from '~/assets/images/discounts/discount-2-class.jpg'
+
 interface Discount {
   name: string
   description: string
@@ -46,17 +49,17 @@ const discounts: Discount[] = [
   {
     name: 'Cкидки учащимся и студентам РФ',
     description: 'Воспользуйтесь скидкой при получении образования.',
-    image: '/images/discounts/discount-1-skoda.JPG',
+    image: discount1Image,
   },
   {
     name: 'Скидка на водительскую медицинскую комиссию',
     description: 'Скидка в водительской медицинской комиссии «ТехМедЭксперт 1-6-8».',
-    image: '/images/discounts/discount-2-class.jpg',
+    image: discount2Image,
   },
   {
     name: 'Оплата материнским капиталом',
     description: 'Используйте материнский капитал для обучения в автошколе.',
-    image: '/images/discounts/discount-2-class.jpg',
+    image: discount2Image,
   }
 ]
 </script>

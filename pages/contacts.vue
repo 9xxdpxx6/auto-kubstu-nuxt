@@ -22,7 +22,7 @@
             <div class="text-center">
               <div class="spinner-border text-primary mb-2" role="status">
                 <span class="visually-hidden">Загрузка карты...</span>
-        </div>
+              </div>
               <div>Загрузка карты...</div>
             </div>
           </div>
@@ -57,11 +57,13 @@
 </template>
 
 <script lang="ts" setup>
+import enterImage from '~/assets/images/contacts/enter.jpg'
+
 const { contactsSeo } = usePageSeo()
 contactsSeo()
 
 const images = {
-  enter: '/images/contacts/enter.JPG'
+  enter: enterImage
 }
 
 const mapContainer = ref(null)
