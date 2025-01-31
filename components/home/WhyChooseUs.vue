@@ -5,7 +5,7 @@
             <div class="col-lg-4 mb-3 mb-lg-0" v-for="(reason, index) in reasons" :key="index">
                 <div class="card h-100 text-center mb-4 shadow-sm">
                     <div class="card-body">
-                        <i :class="reason.icon" class="icon mb-3"></i>
+                        <i :class="reason.icon" class="icon mb-3" v-animate-on-visible:[index]></i>
                         <h5 class="card-title display-6">{{ reason.title }}</h5>
                         <p class="card-text lean">{{ reason.description }}</p>
                     </div>
@@ -16,10 +16,37 @@
 </template>
 
 <script setup lang="ts">
+// Add custom directive for intersection observer
+const vAnimateOnVisible = {
+    mounted: (el: HTMLElement, binding: { arg: number }) => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove existing classes
+                    el.classList.remove('rotate-br');
+                    el.style.animationDelay = '';
+                    
+                    // Calculate delay based on index
+                    const delay = (binding.arg || 0) * 0.06;
+                    
+                    // Set delay and add animation class
+                    el.style.animationDelay = `${delay}s`;
+                    void el.offsetWidth; // Trigger reflow
+                    el.classList.add('rotate-br');
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        observer.observe(el);
+    }
+};
+
 interface Reason {
-	title: string;
-	description: string;
-	icon: string;
+    title: string;
+    description: string;
+    icon: string;
 }
 
 const reasons: Reason[] = [
@@ -42,20 +69,36 @@ const reasons: Reason[] = [
 </script>
 
 <style lang="scss" scoped>
-.why-choose-us-container {
-	margin: 0 auto;
-}
-
 .icon {
-	font-size: 40px;
-	color: #007bff;
+    font-size: 40px;
+    color: #007bff;
 }
 
 .card {
-	transition: transform 0.2s;
+    transition: none !important;
+    transform: none !important;
+    &:hover {
+        transform: none !important;
+    }
+}
 
-	&:hover {
-		transform: none;
-	}
+$animation-name: rotate-br;
+$duration: 0.4s;
+$timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+.#{$animation-name} {
+    animation: $animation-name $duration $timing-function reverse both;
+    animation-delay: 0s; // Default delay
+}
+
+@keyframes #{$animation-name} {
+    0% {
+        transform: rotate(0);
+        transform-origin: bottom right;
+    }
+    100% {
+        transform: rotate(360deg);
+        transform-origin: bottom right;
+    }
 }
 </style>
