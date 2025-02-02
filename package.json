@@ -21,7 +21,8 @@
     "pinia": "^2.3.1",
     "prettier": "^3.4.2",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "yandex-metrika-module-nuxt3": "^1.5.3"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",

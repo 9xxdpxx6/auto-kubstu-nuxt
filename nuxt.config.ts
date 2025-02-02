@@ -19,8 +19,18 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     // '@nuxt/image',
     // '@pinia/nuxt',
-    'nuxt-typed-router'
+    'nuxt-typed-router',
+    'yandex-metrika-module-nuxt3',
   ],
+  yandexMetrika: {
+    id: '99609527',
+    webvisor: true,
+    consoleLog: true,
+    clickmap: true,
+    useCDN: false,
+    trackLinks: true,
+    accurateTrackBounce: true,
+  },
   fonts: {
     families: [
       {

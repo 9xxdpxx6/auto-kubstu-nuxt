@@ -7,6 +7,7 @@
                         <img :src="logo" alt="Автошкола Политех" height="40" class="mb-2"/>
                     </NuxtLink>
                     <p>Качественное обучение вождению для начинающих и профессионалов. Мы готовим водителей с гарантией успеха на дорогах.</p>
+                    <p>Посещений сегодня: <span>{{ visits }}</span></p>
                 </div>
 
                 <div class="col-md-4">
@@ -48,7 +49,25 @@
 
 <script setup>
 import logo from '~/assets/images/logo.png'
+import { ref, onMounted } from 'vue'
+import { useApi } from '~/composables/useApi'
+
+const { visits: visitsApi } = useApi()
+const visits = ref(0)
+
+onMounted(async () => {
+    try {
+        const response = await visitsApi.list()
+        console.log(response);
+        
+        // visits.value = response.data?.value?.total_visits || 0      //всего
+        visits.value = response.data?.value?.unique_visitors || 0   //с разных ip
+    } catch (error) {
+        console.error('Ошибка при получении данных о посещениях:', error)
+    }
+})
 </script>
+
 
 <style lang="scss" scoped>
 .footer {

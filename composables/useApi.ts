@@ -1,6 +1,7 @@
 import type { Post, PostPreview } from '@/types/blog'
 import type { Discount } from '~/types/discounts'
 import type { Category, CategoryPreview } from '@/types/categories'
+import type { Visit } from '@/types/stats'
 
 export const useApi = () => {
   const config = useRuntimeConfig()
@@ -65,10 +66,18 @@ export const useApi = () => {
     })
   }
 
+  const visits = {
+    list: (params?: { 
+      start_date?: string;
+      end_date?: string;
+    }) => request<Visit>('/visits', { params })
+  }
+
   return {
     categories,
     posts,
     discounts,
-    callbacks
+    callbacks,
+    visits
   }
 }
