@@ -23,7 +23,7 @@ import advantage1Image from '~/assets/images/advantages/advantage-1-voditel.jpg'
 import advantage1Background from '~/assets/images/advantages/advantage-1-hill.jpg'
 import advantage2Image from '~/assets/images/advantages/advantage-2-car.jpg'
 import advantage2Background from '~/assets/images/advantages/advantage-2-moto.jpg'
-import advantage3Image from '~/assets/images/advantages/advantage-3-class.JPG'
+import advantage3Image from '~/assets/images/advantages/advantage-3-class.jpg'
 import advantage3Background from '~/assets/images/advantages/advantage-3-class-2.jpg'
 
 const advantages = [
