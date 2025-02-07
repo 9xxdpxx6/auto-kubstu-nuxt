@@ -84,7 +84,9 @@ const { data: categoriesResponse, status } = await useAsyncData(
   async () => {
     try {
       const response = await api.categories.list()
+      console.log(response)
       const responseData = response.data?.value?.data
+      console.log(responseData)
       if (Array.isArray(responseData) && responseData.length > 0) {
         return {
           data: responseData as CategoryPreview[],

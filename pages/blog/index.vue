@@ -124,7 +124,9 @@ const { data: postsResponse, status, refresh } = useAsyncData(
         keyword: filters.keyword || null,
         sort: filters.sortOrder || null
       })
+      console.log(response)
       const value = response.data?.value as PostsResponse
+      console.log(value)
       if (!value?.data || !value?.meta) {
         return defaultResponse()
       }
