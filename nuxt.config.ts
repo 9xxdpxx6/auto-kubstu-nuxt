@@ -59,7 +59,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: 'https://ci16364.tw1.ru/api'
+      // apiBase: 'http://localhost/api'
+      apiBase: 'https://auto-api.kubstu.ru/api'
     }
   },
   build: {
