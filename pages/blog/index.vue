@@ -115,15 +115,20 @@ const defaultResponse = (): PostsResponse => ({
   }
 })
 
+console,log('before func')
+
 const { data: postsResponse, status, refresh } = useAsyncData(
   'posts',
+console,log('async query')
   async () => {
     try {
+      console.log('start try')
       const response = await api.posts.list({
         page: pagination.currentPage,
         keyword: filters.keyword || null,
         sort: filters.sortOrder || null
       })
+      console.log('here must be log response')
       console.log(response)
       const value = response.data?.value as PostsResponse
       console.log(value)
