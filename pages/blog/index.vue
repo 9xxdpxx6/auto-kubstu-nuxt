@@ -115,26 +115,29 @@ const defaultResponse = (): PostsResponse => ({
   }
 })
 
-console.log('before func')
+console.log('blog/index проверка вызова логов в странице новостей')
 
 const { data: postsResponse, status, refresh } = useAsyncData(
   'posts',
   async () => {
-console.log('async query')
+console.log('blog/index начало выполнения функции')
     try {
-      console.log('start try')
+      console.log('blog/index отправка запроса')
       const response = await api.posts.list({
         page: pagination.currentPage,
         keyword: filters.keyword || null,
         sort: filters.sortOrder || null
       })
-      console.log('here must be log response')
-      console.log(response)
+      console.log('blog/index Ответ от АПМ сервера:', response)
       const value = response.data?.value as PostsResponse
-      console.log(value)
+      console.log('blog/index извлечение данных из ответа', value)
       if (!value?.data || !value?.meta) {
+        console.log('blog/index ответ пустой');
+        
         return defaultResponse()
       }
+      console.log('blog/index ответ пришёл и все хорошо');
+      
       return {
         data: value.data,
         meta: value.meta

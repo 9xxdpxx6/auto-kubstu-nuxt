@@ -58,7 +58,7 @@ const visits = ref(0)
 onMounted(async () => {
     try {
         const response = await visitsApi.list()
-        console.log(response);
+        // console.log(response);
         
         // visits.value = response.data?.value?.total_visits || 0      //всего
         visits.value = response.data?.value?.unique_visitors || 0   //с разных ip

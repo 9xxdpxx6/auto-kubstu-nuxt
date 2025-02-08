@@ -79,15 +79,21 @@ const defaultResponse: CategoriesResponse = {
   }
 }
 
+console.log('pricing/index проверка вызова логов в странице категорий')
+
 const { data: categoriesResponse, status } = await useAsyncData(
   'categories',
   async () => {
     try {
       const response = await api.categories.list()
-      console.log(response)
+      console.log(response);
+      
+      console.log('pricing/index ответ от апи до обработки (вызвано в компоненте)', response)
       const responseData = response.data?.value?.data
-      console.log(responseData)
+      console.log('pricing/index ответ от апи извлечение данных (вызвано в компоненте)', responseData)
       if (Array.isArray(responseData) && responseData.length > 0) {
+        console.log('pricing/index Ответ получен и выолняется парсинг');
+        
         return {
           data: responseData as CategoryPreview[],
           meta: {

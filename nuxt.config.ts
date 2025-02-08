@@ -20,17 +20,17 @@ export default defineNuxtConfig({
     // '@nuxt/image',
     // '@pinia/nuxt',
     'nuxt-typed-router',
-    'yandex-metrika-module-nuxt3',
+    // 'yandex-metrika-module-nuxt3',
   ],
-  yandexMetrika: {
-    id: '99609527',
-    webvisor: true,
-    consoleLog: true,
-    clickmap: true,
-    useCDN: false,
-    trackLinks: true,
-    accurateTrackBounce: true,
-  },
+  // yandexMetrika: {
+  //   id: '99609527',
+  //   webvisor: true,
+  //   consoleLog: true,
+  //   clickmap: true,
+  //   useCDN: false,
+  //   trackLinks: true,
+  //   accurateTrackBounce: true,
+  // },
   fonts: {
     families: [
       {
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      // apiBase: 'http://localhost/api'
+      // apiBase: 'http://localhost:8000/api'
       apiBase: 'https://auto-api.kubstu.ru/api'
     }
   },
