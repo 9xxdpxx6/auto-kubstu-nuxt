@@ -12,7 +12,8 @@ export default defineNuxtConfig({
     ],
   },
   plugins: [
-    '~/plugins/callback-modal.client.ts'
+    '~/plugins/callback-modal.client.ts',
+    '~/plugins/yandex-metrika.client.ts',
   ],
   modules: [
     '@vueuse/nuxt',
